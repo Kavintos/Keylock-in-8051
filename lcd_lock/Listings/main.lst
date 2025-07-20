@@ -1,0 +1,41 @@
+C51 COMPILER V9.60.7.0   MAIN                                                              07/20/2025 15:18:06 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\main
+                    -.lst) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include "lcd.h"
+   2          #include "key.h"
+   3          
+   4          void main() {
+   5   1          ini();
+   6   1          lcd_str("Enter PIN:");
+   7   1      
+   8   1          while(1) {
+   9   2              delay(30);
+  10   2              c1 = c2 = c3 = 1;
+  11   2              r1 = r2 = r3 = r4 = 0;
+  12   2      
+  13   2              if(c1 == 0) rowfinder1();
+  14   2              if(c2 == 0) rowfinder2();
+  15   2              if(c3 == 0) rowfinder3();
+  16   2          }
+  17   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     53    ----
+   CONSTANT SIZE    =     11    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

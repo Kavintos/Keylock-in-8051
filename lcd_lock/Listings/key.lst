@@ -1,0 +1,86 @@
+C51 COMPILER V9.60.7.0   KEY                                                               07/20/2025 15:18:06 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE KEY
+OBJECT MODULE PLACED IN .\Objects\key.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE key.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\key.l
+                    -st) TABS(2) OBJECT(.\Objects\key.obj)
+
+line level    source
+
+   1          #include "lcd.h"
+   2          #include "key.h"
+   3          char input[4];
+   4          int index = 0; 
+   5          void check_password() {
+   6   1          char correct[4] = {'1','2','3','4'};
+   7   1          int ok = 1;
+   8   1          int i;
+   9   1          for(i= 0; i < 4; i++){
+  10   2              if(input[i] != correct[i])
+  11   2              {
+  12   3                ok=0;
+  13   3                break;
+  14   3              }
+  15   2          }
+  16   1      
+  17   1          cmd(0x01);
+  18   1          if(ok) lcd_str("Access Granted");
+  19   1          else lcd_str("Access Denied");
+  20   1      
+  21   1          delay(2000);
+  22   1          cmd(0x01);
+  23   1          lcd_str("Enter PIN:");
+  24   1          index = 0;
+  25   1      }
+  26          void rowfinder1() {
+  27   1          r1 = r2 = r3 = r4 = 1;
+  28   1          c1 = c2 = c3 = 0;
+  29   1      
+  30   1          if(r1 == 0) { lcd_dat('1'); input[index++] = '1'; delay(200); }
+  31   1          if(r2 == 0) { lcd_dat('4'); input[index++] = '4'; delay(200); }
+  32   1          if(r3 == 0) { lcd_dat('7'); input[index++] = '7'; delay(200); }
+  33   1          if(r4 == 0) { lcd_dat('*'); input[index++] = '*'; delay(200); }
+  34   1      
+  35   1          if(index == 4) check_password();  
+  36   1      }
+  37          void rowfinder2() {
+  38   1          r1 = r2 = r3 = r4 = 1;
+  39   1          c1 = c2 = c3 = 0;
+  40   1      
+  41   1          if(r1 == 0) { lcd_dat('2'); input[index++] = '2'; delay(200); }
+  42   1          if(r2 == 0) { lcd_dat('5'); input[index++] = '5'; delay(200); }
+  43   1          if(r3 == 0) { lcd_dat('8'); input[index++] = '8'; delay(200); }
+  44   1          if(r4 == 0) { lcd_dat('0'); input[index++] = '0'; delay(200); }
+  45   1      
+  46   1          if(index == 4) check_password();  
+  47   1      }
+  48          void rowfinder3() {
+  49   1          r1 = r2 = r3 = r4 = 1;
+  50   1          c1 = c2 = c3 = 0;
+  51   1      
+  52   1          if(r1 == 0) { lcd_dat('3'); input[index++] = '3'; delay(200); }
+  53   1          if(r2 == 0) { lcd_dat('6'); input[index++] = '6'; delay(200); }
+  54   1          if(r3 == 0) { lcd_dat('9'); input[index++] = '9'; delay(200); }
+C51 COMPILER V9.60.7.0   KEY                                                               07/20/2025 15:18:06 PAGE 2   
+
+  55   1          if(r4 == 0) { lcd_dat('#'); input[index++] = '#'; delay(200); }
+  56   1      
+  57   1          if(index == 4) check_password();  
+  58   1      }
+  59          
+  60          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    539    ----
+   CONSTANT SIZE    =     44    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      6       6
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

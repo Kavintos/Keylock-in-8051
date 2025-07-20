@@ -1,0 +1,66 @@
+C51 COMPILER V9.60.7.0   LCD                                                               07/20/2025 15:18:06 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE LCD
+OBJECT MODULE PLACED IN .\Objects\lcd.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE lcd.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\lcd.l
+                    -st) TABS(2) OBJECT(.\Objects\lcd.obj)
+
+line level    source
+
+   1          #include "lcd.h"
+   2          
+   3          void delay(int x)
+   4          {
+   5   1        int i,j;
+   6   1        for(i=0;i<x;i++)
+   7   1          for(j=0;j<500;j++);
+   8   1      }
+   9          
+  10          void cmd(char c)
+  11          {
+  12   1        rs=0;
+  13   1        lcd=c;
+  14   1        e=1;
+  15   1        delay(5);
+  16   1        e=0;
+  17   1      }
+  18          
+  19          void lcd_dat(char dat)
+  20          {
+  21   1        rs=1;
+  22   1        lcd=dat;
+  23   1        e=1;
+  24   1        delay(5);
+  25   1        e=0;
+  26   1      }
+  27          void lcd_str(char *str)
+  28          {
+  29   1          while(*str)
+  30   1          {
+  31   2              lcd_dat(*str++);
+  32   2          }
+  33   1      }
+  34          
+  35          
+  36          void ini()
+  37          {
+  38   1        cmd(0x38);
+  39   1        cmd(0x0E);
+  40   1        cmd(0x06);
+  41   1        cmd(0x01);
+  42   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    119    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       3
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

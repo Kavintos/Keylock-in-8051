@@ -1,0 +1,5 @@
+".\Objects\lcd.obj",
+".\Objects\key.obj",
+".\Objects\main.obj" 
+TO ".\Objects\lcd_lock" 
+PRINT(".\Listings\lcd_lock.m51")
